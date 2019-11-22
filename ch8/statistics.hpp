@@ -20,7 +20,7 @@ double genZValue(double alpha) {
 double genTValue(int degree, double upperTailArea) {
     // get how many times of standard error in Student-t distribution
     double sum = 0, i = 4, dx = 0.00001;
-    double coef_PDF = gamma((degree + 1) / 2) / (sqrt(acos(-1) * degree) * gamma(degree / 2));
+    double coef_PDF = tgamma((degree + 1) / 2) / (sqrt(acos(-1) * degree) * tgamma(degree / 2));
     for (; sum < upperTailArea; i -= dx)
         sum += dx * coef_PDF * pow(1 + i * i / degree, (degree + 1) / (-2));
     cout << "t-score: " << i << endl;
@@ -48,7 +48,7 @@ double errorRadius(vector<double>& _dataSet, int degree, int sampleSize, double 
 }
 
 double errorRadius(vector<double>& _dataSet, double upperTailArea = 0.025) {
-    /* 
+    /*
     * giving data set and the upper tail area of Student-T distribution
     * return the error radius
     * for too lazy to only input data set
@@ -58,7 +58,7 @@ double errorRadius(vector<double>& _dataSet, double upperTailArea = 0.025) {
 }
 
 double errorRadius(double knownSigma, double alpha, int sampleSize) {
-    /* 
+    /*
     * giving alpha return the error radius for known Sigma of Z distribution
     * return the error radius
     */
@@ -68,7 +68,7 @@ double errorRadius(double knownSigma, double alpha, int sampleSize) {
 pair<double, double> genConfidenceInterval(double theta, double errorRadius) {
     /*
      * @theta: the sample variable
-     * @errorRadius: a radius of error, which might greater than 1, 
+     * @errorRadius: a radius of error, which might greater than 1,
      *               means the standardDeviation times (z or t) over sqrt(n)
      */
     return make_pair(theta - errorRadius, theta + errorRadius);

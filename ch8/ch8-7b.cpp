@@ -4,24 +4,18 @@ using namespace std;
 
 int main() {
     vector<double> dataSet;
-    double newData;
-
-    ifstream inFile("Setters.csv", ios::in);
-    while (inFile >> newData)
-        dataSet.push_back(newData);
+    string title = readSingleLineCSV(dataSet, "Setters2.csv");
 
     double alpha;
     cout << "what's alpha: ";
     cin >> alpha;
-    double mean = genMean(dataSet),
-           sampleSize = dataSet.size(),
-           ssd = genSampleStandardDeviation(dataSet, mean, sampleSize),
-           z = genZValue(alpha);
+    double mean = genMean(dataSet);
+    double ssd = genSampleStandardDeviation(dataSet, mean, dataSet.size());
+    auto confididence = genConfidenceInterval(mean, errorRadius(dataSet, alpha / 2));
+    //auto confididence = genConfidenceInterval(mean, errorRadius(ssd, alpha, dataSet.size()));
 
-    cout << "Sample Mean:" << mean << endl;
-    cout << "In " << (1 - alpha) * 100 << "% confidence interval mean will in: "
-         << "[ " << mean - (ssd * sqrt(sampleSize) / z) << ", " << mean + (ssd * sqrt(sampleSize) / z) << " ]" << endl;
+    cout << "In" << title << ": \nSample Mean:" << mean << endl;
+    cout << confididence << endl;
 
-    inFile.close();
     return 0;
 }
