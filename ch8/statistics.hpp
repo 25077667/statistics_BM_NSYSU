@@ -47,19 +47,21 @@ double errorRadius(vector<double>& _dataSet, int degree, int sampleSize, double 
     return ssd / sqrt(sampleSize) * genTValue(degree, upperTailArea);
 }
 
-double errorRadius(vector<double>& _dataSet, int sampleSize, double upperTailArea = 0.025) {
-    // for lazy input degree is n-1, in Student-t distribution
-    return errorRadius(_dataSet, sampleSize - 1, sampleSize, upperTailArea);
-}
-
 double errorRadius(vector<double>& _dataSet, double upperTailArea = 0.025) {
-    // for too lazy to only input data set
+    /* 
+    * giving data set and the upper tail area of Student-T distribution
+    * return the error radius
+    * for too lazy to only input data set
+    */
     int sampleSize = _dataSet.size();
     return errorRadius(_dataSet, sampleSize - 1, sampleSize, upperTailArea);
 }
 
 double errorRadius(double knownSigma, double alpha, int sampleSize) {
-    // for known Sigma, in Z distribution
+    /* 
+    * giving alpha return the error radius for known Sigma of Z distribution
+    * return the error radius
+    */
     return knownSigma / sqrt(sampleSize) * genZValue(alpha);
 }
 
