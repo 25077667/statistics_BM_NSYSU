@@ -10,9 +10,7 @@ int main() {
     cout << "what's alpha: ";
     cin >> alpha;
     double mean = genMean(dataSet);
-    double ssd = genSampleStandardDeviation(dataSet, mean, dataSet.size());
-    auto confididence = genConfidenceInterval(mean, errorRadius(dataSet, alpha / 2));
-    //auto confididence = genConfidenceInterval(mean, errorRadius(ssd, alpha, dataSet.size()));
+    auto confididence = genConfidenceInterval(mean, errorRadius(255, alpha, dataSet.size()));
 
     cout << "In" << title << ": \nSample Mean:" << mean << endl;
     cout << confididence << endl;
