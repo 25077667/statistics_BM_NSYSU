@@ -13,6 +13,8 @@ int main() {
     auto confidence = genConfidenceInterval(mean, errorRadius(dataSet));  //a
     int sampleSize = dataSet.size();
 
+    cout << "In " << title << "\n" << confidence << endl;
+
     double meanCostumer = 0;
     for (auto i : dataSet)
         meanCostumer += i / 8.11 / sampleSize;
