@@ -1,6 +1,7 @@
 #include <cmath>
 #include <fstream>
 #include <iostream>
+#include <map>
 #include <utility>
 #include <vector>
 // B073040047 楊志璿
@@ -126,6 +127,34 @@ string readSingleLineCSV(vector<T>& _dataSet, string fileName) {
     getline(inFile, title);
     while (inFile >> rawdata)
         _dataSet.push_back(rawdata);
+    inFile.close();
+    return title;
+}
+
+template <class T>
+string readSingleLineCSV(map<T, int>& proportionDataSet, string fileName) {
+    /* 
+    * only for reading proportion Data
+    * will return the file's title
+    * read only single line csv file
+    * @proportionDataSet: a container you want to storge at
+    * @fileName: fileName
+    */
+    ifstream inFile(fileName, ios::in);
+    if (inFile.fail()) {
+        cerr << "Open file failed" << endl;
+        return "";
+    }
+    string title;
+    T rawData;
+    getline(inFile, title);
+    while (inFile >> rawData) {
+        auto isInMap = find(proportionDataSet.begin(), proportionDataSet.end(), rawData);
+        if (isInMap != proportionDataSet.end())
+            proportionDataSet.at(isInMap)++;
+        else
+            proportionDataSet.insert(pair<T, int>(rawData, 1));
+    }
     inFile.close();
     return title;
 }
