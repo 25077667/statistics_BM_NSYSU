@@ -81,34 +81,33 @@ ostream& operator<<(ostream& os, const pair<T, S>& v) {
     return os;
 }
 
-int needingSampleSize(double p_bar = 0.5, double marginError = 0.95) {
+namespace needingSampleSize {
+int p(double alpha, double p = 0.5, double marginError = 0.95) {
     /*
-    * @p_bar: the p bar of sample proportions, which might be iid Ber(P) (Bernoulli distribution)
+    * @p: the p bar of sample proportions, which might be iid Ber(P) (Bernoulli distribution)
     * @marginError: the margin error of confidence interval
     */
-    double q = 1 - p_bar, alpha = 1 - marginError;
-    auto sampleSize = p_bar * q * genZValue(alpha) / marginError / marginError;
+    double q = 1 - p, z = genZValue(alpha / 2);
+    auto sampleSize = p * q * z * z / marginError / marginError;
     bool isFloat = (sampleSize / 10 != int(sampleSize / 10));  //prevent IEEE-754, hence dividedF by 10
     return (isFloat ? (sampleSize + 1) : sampleSize);
 }
 
-int needingSampleSize(double knownTheta, bool is_X_bar, double marginError = 0.95) {
+int x_bar(double alpha, double knownTheta, double marginError) {
     /*
     * @knownTheta: the sigma which is the population standard deviation
-    * @is_X_bar: is calculating for determinate x bar sample size, if not will direct to calculate p bar sample size
     * @marginError: the margin error of confidence interval
     */
     int sampleSize;
-    if (!is_X_bar)
-        sampleSize = needingSampleSize(knownTheta, marginError);
-    else {
-        double z = genZValue(1 - marginError);
-        sampleSize = z * z * knownTheta * knownTheta / marginError / marginError;
-        bool isFloat = (sampleSize / 10 != int(sampleSize / 10));  //prevent IEEE-754, hence dividedF by 10
-        sampleSize = (isFloat ? (sampleSize + 1) : sampleSize);
-    }
+
+    double z = genZValue(alpha / 2);
+    sampleSize = z * z * knownTheta * knownTheta / marginError / marginError;
+    bool isFloat = (sampleSize / 10 != int(sampleSize / 10));  //prevent IEEE-754, hence dividedF by 10
+    sampleSize = (isFloat ? (sampleSize + 1) : sampleSize);
+
     return sampleSize;
 }
+}  // namespace needingSampleSize
 
 template <class T>
 string readSingleLineCSV(vector<T>& _dataSet, string fileName) {
