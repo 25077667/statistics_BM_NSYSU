@@ -15,11 +15,11 @@ int main() {
 
     cout << "In " << title << "\n" << confidence << endl;
 
-    double meanCostumer = 0;
+    double meanCustomer = 0;
     for (auto i : dataSet)
-        meanCostumer += i / 8.11 / sampleSize;
-    cout << "The mean number of costumer per theater: " << meanCostumer << endl;
+        meanCustomer += i / 8.11 / sampleSize;
+    cout << "The mean number of customer per theater: " << meanCustomer << endl;
 
-    cout << "The total number of costumer who saw the movie in 4048 theaters: " << meanCostumer * 4080 << endl;
+    cout << "The total number of customer who saw the movie in 4048 theaters: " << meanCustomer * 4080 << endl;
     return 0;
 }
