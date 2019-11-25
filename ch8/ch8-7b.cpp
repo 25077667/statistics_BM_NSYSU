@@ -10,9 +10,11 @@ int main() {
     cout << "what's alpha: ";
     cin >> alpha;
     double mean = genMean(dataSet);
-    auto confididence = genConfidenceInterval(mean, errorRadius(255, alpha, dataSet.size()));
+    auto errorR = errorRadius(255, alpha, dataSet.size());
+    auto confididence = genConfidenceInterval(mean, errorR);
 
     cout << "In" << title << ": \nSample Mean:" << mean << endl;
+    cout << "Margin error: " << errorR << endl;
     cout << confididence << endl;
 
     return 0;
