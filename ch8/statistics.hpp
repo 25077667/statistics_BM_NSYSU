@@ -1,10 +1,10 @@
+#include <boost/math/distributions/students_t.hpp>
 #include <cmath>
 #include <fstream>
 #include <iostream>
 #include <map>
 #include <utility>
 #include <vector>
-#include <boost/math/distributions/students_t.hpp>
 // B073040047 楊志璿
 #ifndef STATISTICS_HPP
 #define STATISTICS_HPP
@@ -12,19 +12,15 @@ using namespace std;
 
 double genZValue(double alpha) {
     // get how many times of standard error in Z distribution
-    double sum = 0, i = 4, dx = 0.00001;
+    double sum = 0, i = 10, dx = 0.000001;
     for (; sum < alpha / 2; i -= dx)
         sum += dx / sqrt(2 * acos(-1)) * exp(-0.5 * i * i);
-    //cout << "z-score: " << i << endl;
     return i;
 }
 
 double genTValue(int degree, double upperTailArea) {
-    // get how many times of standard error in Student-t distribution
-    double i = 32;
-    using namespace boost::math;
-    students_t dist(degree);
-    auto T = quantile(complement(dist, upperTailArea)); // some black magic
+    boost::math::students_t Tdistribution(degree);
+    auto T = boost::math::quantile(complement(Tdistribution, upperTailArea));  // some black magic
     return T;
 }
 
@@ -60,6 +56,7 @@ double errorRadius(vector<double>& _dataSet, double upperTailArea = 0.025) {
 
 double errorRadius(double knownSigma, double alpha, int sampleSize) {
     /*
+    * @knownSigma: the population sigma, which over sqrt(n)
     * giving alpha return the error radius for known Sigma of Z distribution
     * return the error radius
     */
@@ -87,10 +84,9 @@ int p(double alpha, double p = 0.5, double marginError = 0.95) {
     * @p: the p bar of sample proportions, which might be iid Ber(P) (Bernoulli distribution)
     * @marginError: the margin error of confidence interval
     */
-    double q = 1 - p, z = genZValue(alpha / 2);
+    double q = 1 - p, z = genZValue(alpha);
     auto sampleSize = p * q * z * z / marginError / marginError;
-    bool isFloat = (sampleSize / 10 != int(sampleSize / 10));  //prevent IEEE-754, hence dividedF by 10
-    return (isFloat ? (sampleSize + 1) : sampleSize);
+    return ceil(sampleSize);
 }
 
 int x_bar(double alpha, double knownTheta, double marginError) {
@@ -98,12 +94,9 @@ int x_bar(double alpha, double knownTheta, double marginError) {
     * @knownTheta: the sigma which is the population standard deviation
     * @marginError: the margin error of confidence interval
     */
-    double z = genZValue(alpha / 2);
+    double z = genZValue(alpha);
     auto sampleSize = z * z * knownTheta * knownTheta / marginError / marginError;
-    bool isFloat = (sampleSize / 10 != int(sampleSize / 10));  //prevent IEEE-754, hence dividedF by 10
-    sampleSize = (isFloat ? (sampleSize + 1) : sampleSize);
-
-    return sampleSize;
+    return ceil(sampleSize);
 }
 }  // namespace needingSampleSize
 
@@ -145,10 +138,10 @@ string readSingleLineCSV(map<T, int>& proportionDataSet, string fileName) {
     string title;
     T rawData;
     getline(inFile, title);
-    while (inFile >> rawData) {
-        auto isInMap = find(proportionDataSet.begin(), proportionDataSet.end(), rawData);
+    while (getline(inFile, rawData)) {
+        auto isInMap = proportionDataSet.find(rawData);
         if (isInMap != proportionDataSet.end())
-            proportionDataSet.at(isInMap)++;
+            proportionDataSet.at(isInMap->first)++;
         else
             proportionDataSet.insert(pair<T, int>(rawData, 1));
     }
