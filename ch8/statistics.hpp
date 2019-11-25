@@ -98,10 +98,8 @@ int x_bar(double alpha, double knownTheta, double marginError) {
     * @knownTheta: the sigma which is the population standard deviation
     * @marginError: the margin error of confidence interval
     */
-    int sampleSize;
-
     double z = genZValue(alpha / 2);
-    sampleSize = z * z * knownTheta * knownTheta / marginError / marginError;
+    auto sampleSize = z * z * knownTheta * knownTheta / marginError / marginError;
     bool isFloat = (sampleSize / 10 != int(sampleSize / 10));  //prevent IEEE-754, hence dividedF by 10
     sampleSize = (isFloat ? (sampleSize + 1) : sampleSize);
 
