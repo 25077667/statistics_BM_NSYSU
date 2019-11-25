@@ -6,14 +6,13 @@ int main() {
     vector<double> dataSet;
     string title = readSingleLineCSV(dataSet, "Guardians.csv");
 
-    double alpha;
-    cout << "what's alpha: ";
-    cin >> alpha;
+    double alpha = 0.05;
     double mean = genMean(dataSet);
     auto confidence = genConfidenceInterval(mean, errorRadius(dataSet));  //a
     int sampleSize = dataSet.size();
 
-    cout << "In " << title << "\n" << confidence << endl;
+    cout << "In " << title << "\n"
+         << confidence << endl;
 
     double meanCustomer = 0;
     for (auto i : dataSet)

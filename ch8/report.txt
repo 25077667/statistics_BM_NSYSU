@@ -1,0 +1,87 @@
+=====this is problem3=====
+In (a): [76.2045, 83.7955]
+In (b): [77.3162, 82.6838]
+
+
+=====this is problem7=====
+InCost ($): 
+Sample Mean:1836.84
+Margin error: 70.6811
+[1766.16, 1907.52]
+
+
+=====this is problem8=====
+3.40887
+4.48002
+
+
+=====this is problem9=====
+In ﻿Smoke and Fire Cost
+In 95% confidence interval mean will in: [18303.8, 19896.2]
+In a: 2.17881
+In b: -1.67591
+In c: 2.45726
+In d: -1.31635, 1.31635
+In e: -1.67943, 1.67943
+
+
+=====this is problem17=====
+In problem 17 data
+Sample Mean:6.34
+[5.72532, 6.95468]
+
+
+=====this is problem21=====
+In Savings per Visit ($) with 95% confidence interval: [62.358, 79.642]
+
+
+=====this is proble22=====
+In Revenue ($)
+[21613.1, 24586.9]
+The mean number of customer per theater: 2848.34
+The total number of customer who saw the movie in 4048 theaters: 1.16212e+07
+
+
+=====this is problem26=====
+For (a): 21
+For (b): 48
+For (c): 189
+
+
+=====this is problem28=====
+For (a): 192
+For (b): 272
+For (c): 469
+
+
+=====this is problem30=====
+1537
+
+
+=====this is problem34=====
+1068
+
+
+=====this is problem35=====
+In (a). p bar is 0.57001
+In (b). margin error is 0.0295457
+In (c). the confidence interval [0.540464, 0.599556]
+In (d). the confidence interval [0.534804, 0.605216]
+
+
+=====this is problem35=====
+In Right Direction?: 
+No:	553
+Not Sure:	70
+Yes:	384
+In (a): 0.381331
+In (b) margin Error: 0.0299995
+In (c) Confidence Interval: [0.351331, 0.41133]
+In (d) Confidence Interval: [0.58867, 0.648669]
+
+
+=====this is problem39=====
+574
+991
+
+//B073040047 楊志璿

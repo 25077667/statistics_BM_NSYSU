@@ -6,9 +6,7 @@ int main() {
     vector<double> dataSet;
     string title = readSingleLineCSV(dataSet, "Setters2.csv");
 
-    double alpha;
-    cout << "what's alpha: ";
-    cin >> alpha;
+    double alpha = 0.05;
     double mean = genMean(dataSet);
     auto errorR = errorRadius(255, alpha, dataSet.size());
     auto confididence = genConfidenceInterval(mean, errorR);
