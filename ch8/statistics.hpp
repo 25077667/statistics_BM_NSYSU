@@ -14,7 +14,7 @@ double genZValue(double alpha) {
     double sum = 0, i = 4, dx = 0.00001;
     for (; sum < alpha / 2; i -= dx)
         sum += dx / sqrt(2 * acos(-1)) * exp(-0.5 * i * i);
-    cout << "z-score: " << i << endl;
+    //cout << "z-score: " << i << endl;
     return i;
 }
 
@@ -24,7 +24,7 @@ double genTValue(int degree, double upperTailArea) {
     double coef_PDF = tgamma((degree + 1) / 2) / (sqrt(acos(-1) * degree) * tgamma(degree / 2));
     for (; sum < upperTailArea; i -= dx)
         sum += dx * coef_PDF * pow(1 + i * i / degree, (degree + 1) / (-2));
-    cout << "t-score: " << i << endl;
+    //cout << "t-score: " << i << endl;
     return i;
 }
 
