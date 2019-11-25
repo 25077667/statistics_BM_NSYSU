@@ -4,6 +4,7 @@
 #include <map>
 #include <utility>
 #include <vector>
+#include <boost/math/distributions/students_t.hpp>
 // B073040047 楊志璿
 #ifndef STATISTICS_HPP
 #define STATISTICS_HPP
@@ -20,12 +21,11 @@ double genZValue(double alpha) {
 
 double genTValue(int degree, double upperTailArea) {
     // get how many times of standard error in Student-t distribution
-    double sum = 0, i = 4, dx = 0.00001;
-    double coef_PDF = tgamma((degree + 1) / 2) / (sqrt(acos(-1) * degree) * tgamma(degree / 2));
-    for (; sum < upperTailArea; i -= dx)
-        sum += dx * coef_PDF * pow(1 + i * i / degree, (degree + 1) / (-2));
-    //cout << "t-score: " << i << endl;
-    return i;
+    double i = 32;
+    using namespace boost::math;
+    students_t dist(degree);
+    auto T = quantile(complement(dist, upperTailArea)); // some black magic
+    return T;
 }
 
 double genMean(vector<double>& _dataSet) {
