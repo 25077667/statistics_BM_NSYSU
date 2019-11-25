@@ -6,14 +6,12 @@ int main() {
     vector<double> dataSet;
     string title = readSingleLineCSV(dataSet, "TobaccoFires.csv");
 
-    double alpha;
-    cout << "what's alpha: ";
-    cin >> alpha;
+    double alpha = 0.05;
     double mean = genMean(dataSet);
-    auto confidence = genConfidenceInterval(mean, errorRadius(mean, alpha, dataSet.size()));
+    double ssd = genSampleStandardDeviation(dataSet, mean, dataSet.size());
+    auto confidence = genConfidenceInterval(mean, errorRadius(ssd, alpha, dataSet.size()));
 
     cout << "In " << title << endl;
-    cout << "Sample Mean:" << mean << endl;
     cout << "In " << (1 - alpha) * 100 << "% confidence interval mean will in: " << confidence << endl;
 
     return 0;
