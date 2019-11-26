@@ -5,7 +5,7 @@ int main() {
     map<string, int> dataSet;
     string title = readSingleLineCSV(dataSet, "RightDirection.csv");
     int dataSize = 0;
-    cout << "In " << title << ": " << endl;
+    cout << "In " << title << ": \n" << endl;
     for (const auto& i : dataSet) {
         cout << i.first << ":\t" << i.second << endl;
         dataSize += i.second;
