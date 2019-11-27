@@ -1,3 +1,4 @@
+#include <boost/math/distributions/normal.hpp>
 #include <boost/math/distributions/students_t.hpp>
 #include <cmath>
 #include <fstream>
@@ -12,10 +13,14 @@ using namespace std;
 
 double genZValue(double alpha) {
     // get how many times of standard error in Z distribution
-    double sum = 0, i = 10, dx = 0.000001;
+    boost::math::normal Ndistribution(0, 1);
+    auto Z = boost::math::quantile(complement(Ndistribution, alpha / 2));
+    /*double sum = 0, i = 10, dx = 0.000001;
     for (; sum < alpha / 2; i -= dx)
         sum += dx / sqrt(2 * acos(-1)) * exp(-0.5 * i * i);
-    return i;
+        https://www.boost.org/doc/libs/1_38_0/libs/math/doc/sf_and_dist/html/math_toolkit/dist/dist_ref/dists/normal_dist.html
+    */
+    return Z;
 }
 
 double genTValue(int degree, double upperTailArea) {
