@@ -6,14 +6,18 @@
 #include <map>
 #include <utility>
 #include <vector>
-// this header only for ch8
+// this header for all except for ch8
 #ifndef STATISTICS_HPP
 #define STATISTICS_HPP
 using namespace std;
 
-double genZValue(double alpha) {
+double genZValue(double subscript) {
+    /*
+    *@subscript: the score below the "z".
+    return the value which lookup subscript from the z-table 
+    */
     boost::math::normal Ndistribution(0, 1);
-    auto Z = boost::math::quantile(complement(Ndistribution, alpha / 2));
+    auto Z = boost::math::quantile(complement(Ndistribution, subscript));
     return Z;
 }
 
