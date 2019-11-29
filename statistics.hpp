@@ -7,6 +7,7 @@
 #include <utility>
 #include <vector>
 // this header for all except for ch8
+// MIT LICENSE
 #ifndef STATISTICS_HPP
 #define STATISTICS_HPP
 using namespace std;
