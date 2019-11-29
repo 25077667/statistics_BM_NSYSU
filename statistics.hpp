@@ -11,19 +11,35 @@
 #define STATISTICS_HPP
 using namespace std;
 
-double genZValue(double subscript) {
+double genPValue(double z_value, bool isSingleTail) {
+    // this is the conjugate function of genZValue
+    boost::math::normal Ndistribution(0, 1);
+    z_value = fabs(z_value);
+    auto P = boost::math::cdf(boost::math::complement(Ndistribution, z_value));
+    if (!isSingleTail)
+        P *= 2;
+    return P;
+}
+
+double genZValue(double subscript, bool isSingleTail) {
     /*
-    *@subscript: the score below the "z".
-    return the value which lookup subscript from the z-table 
+    * @subscript: the score below the "z", which means the cumulative distribution function of the area. 
+    *             if subscript is negative meaning it is left tail, possitive otherwise
+    * @isSingleTail: is only sigle tail of the reject area
+    * return the z-score which lookup from the z-table 
     */
     boost::math::normal Ndistribution(0, 1);
-    auto Z = boost::math::quantile(complement(Ndistribution, subscript));
+    if (!isSingleTail)
+        subscript /= 2;
+    auto Z = boost::math::quantile(boost::math::complement(Ndistribution, fabs(subscript)));
+    if (subscript < 0)
+        Z = -Z;
     return Z;
 }
 
 double genTValue(int degree, double upperTailArea) {
     boost::math::students_t Tdistribution(degree);
-    auto T = boost::math::quantile(complement(Tdistribution, upperTailArea));
+    auto T = boost::math::quantile(boost::math::complement(Tdistribution, upperTailArea));
     return T;
 }
 
@@ -63,7 +79,7 @@ double errorRadius(double knownSigma, double alpha, int sampleSize) {
     * giving alpha return the error radius for known Sigma of Z distribution
     * return the error radius
     */
-    return knownSigma / sqrt(sampleSize) * genZValue(alpha);
+    return knownSigma / sqrt(sampleSize) * genZValue(alpha, false);
 }
 
 pair<double, double> genConfidenceInterval(double theta, double errorRadius) {
@@ -87,7 +103,7 @@ int p(double alpha, double p = 0.5, double marginError = 0.95) {
     * @p: the p bar of sample proportions, which might be iid Ber(P) (Bernoulli distribution)
     * @marginError: the margin error of confidence interval
     */
-    double q = 1 - p, z = genZValue(alpha);
+    double q = 1 - p, z = genZValue(alpha, false);
     auto sampleSize = p * q * z * z / marginError / marginError;
     return ceil(sampleSize);
 }
@@ -97,11 +113,15 @@ int x_bar(double alpha, double knownTheta, double marginError) {
     * @knownTheta: the sigma which is the population standard deviation
     * @marginError: the margin error of confidence interval
     */
-    double z = genZValue(alpha);
+    double z = genZValue(alpha, false);
     auto sampleSize = z * z * knownTheta * knownTheta / marginError / marginError;
     return ceil(sampleSize);
 }
 }  // namespace needingSampleSize
+
+double testStatistic(double x_bar, double mu_0, double psd, int sampleSize) {
+    return (x_bar - mu_0) / (psd / sqrt(sampleSize));
+}
 
 template <class T>
 string readSingleLineCSV(vector<T>& _dataSet, string fileName) {
