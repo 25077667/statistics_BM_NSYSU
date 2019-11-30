@@ -5,7 +5,7 @@ int main() {
     double x_bar = 26.4, psd = 6, mu_0 = 25;
     int sampleSize = 40;
     auto test_statistic = testStatistic(x_bar, mu_0, psd, sampleSize);
-    auto p_value = genPValue(test_statistic, true);
+    auto p_value = genPValue(test_statistic);
     cout << "this is problem 10" << endl;
     cout << "In (a) " << test_statistic << endl;
     cout << "In (b) " << p_value << endl;

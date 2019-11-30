@@ -7,7 +7,7 @@ int main() {
     cout << "this is problem 20" << endl;
 
     auto test_statistic = testStatistic(x_bar, mu_0, psd, sampleSize);
-    auto p_value = genPValue(test_statistic, true);
+    auto p_value = genPValue(test_statistic);
     cout << "In (a) please look hand-write paper." << endl;
     cout << "In (b) test statistic is " << test_statistic << endl;
     cout << "In (c) p - value is " << p_value << endl;

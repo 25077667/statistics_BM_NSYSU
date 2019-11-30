@@ -8,15 +8,15 @@ int main() {
     cout << "this is problem 14" << endl;
 
     auto test_statistic = testStatistic(23, mu_0, psd, sampleSize);
-    auto p_value = genPValue(test_statistic, false);
+    auto p_value = genPValue(test_statistic);
     cout << "In (a) " << p_value << ".\n we do " << ((p_value < alpha / 2) ? "" : "not ") << "reject H0" << endl;
 
     test_statistic = testStatistic(25.1, mu_0, psd, sampleSize);
-    p_value = genPValue(test_statistic, false);
+    p_value = genPValue(test_statistic);
     cout << "In (b) " << p_value << ".\n we do " << ((p_value < alpha / 2) ? "" : "not ") << "reject H0" << endl;
 
     test_statistic = testStatistic(20, mu_0, psd, sampleSize);
-    p_value = genPValue(test_statistic, false);
+    p_value = genPValue(test_statistic);
     cout << "In (c) " << p_value << ".\n we do " << ((p_value < alpha / 2) ? "" : "not ") << "reject H0" << endl;
     return 0;
 }
