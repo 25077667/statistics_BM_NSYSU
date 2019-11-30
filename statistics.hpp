@@ -12,13 +12,10 @@
 #define STATISTICS_HPP
 using namespace std;
 
-double genPValue(double z_value, bool isUpperTail) {
+double genPValue(double z_value) {
     // this is the conjugate function of genZValue
-    // if the H0 is "lower", "less" etc. @isUpperTail must be true
     boost::math::normal Ndistribution(0, 1);
-    if(!isUpperTail)
-        z_value = fabs(z_value);
-    auto P = boost::math::cdf(boost::math::complement(Ndistribution, z_value));  //lower tail
+    auto P = boost::math::cdf(boost::math::complement(Ndistribution, fabs(z_value)));
     return P;
 }
 
