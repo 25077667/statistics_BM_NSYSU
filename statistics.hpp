@@ -13,6 +13,8 @@
 using namespace std;
 
 double genPValue(double z_value) {
+    // need to add two tail test!
+    // add bool isTwotail = false
     // this is the conjugate function of genZValue
     boost::math::normal Ndistribution(0, 1);
     auto P = boost::math::cdf(boost::math::complement(Ndistribution, fabs(z_value)));
