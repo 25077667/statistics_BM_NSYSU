@@ -9,7 +9,7 @@ int main() {
     cout << "this is problem 34" << endl;
 
     auto test_statistic = testStatistic(x_bar, mu_0, ssd, sampleSize, true);
-    auto p_value = genPValue(test_statistic);
+    auto p_value = genPValue(test_statistic, true);
     cout << "In (a) please look hand-write paper." << endl;
     cout << "In (b) the smaple mean is " << x_bar << endl;
     cout << "In (c) the smaple standatrd deviation: " << ssd << endl;

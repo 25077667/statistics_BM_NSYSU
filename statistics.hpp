@@ -69,6 +69,10 @@ double genSampleStandardDeviation(Iteratable& _dataSet, double sampleMean, doubl
     return sqrt(1 / (size - 1) * sxx);
 }
 
+double genPercentageStandardDeviation(double p, int sampleSize) {
+    return sqrt(p * (1 - p) / sampleSize);
+}
+
 double errorRadius(vector<double>& _dataSet, int degree, int sampleSize, double upperTailArea) {
     double mean = genMean(_dataSet);
     double ssd = genSampleStandardDeviation(_dataSet, mean, sampleSize);
@@ -194,4 +198,50 @@ string readSingleLineCSV(map<T, int>& proportionDataSet, string fileName) {
     return title;
 }
 
+string readMultiLineCSV(map<string, map<string, int>>& proportionDataSet, string fileName) {
+    // @proportionDataSet: {title, {data, freq}}
+    // return file name
+    ifstream inFile(fileName, ios::in);
+    if (inFile.fail()) {
+        cerr << "Open file failed" << endl;
+        return "";
+    }
+    string titles, singleLine;
+    vector<string> titlesContainer;
+    getline(inFile, titles);
+    for (auto index = titles.find(','); index != string::npos; index = titles.find(',')) {
+        string firstSubstring(titles.substr(0, index));
+        titlesContainer.push_back(firstSubstring);
+        titles.erase(0, firstSubstring.length() + 1);
+    }
+    titlesContainer.push_back(titles);  //push last title
+
+    while (getline(inFile, singleLine)) {
+        for (auto i : titlesContainer) {
+            auto index = singleLine.find(',');
+            string tmp;
+            if (index != string::npos)
+                tmp = singleLine.substr(0, index);
+            else
+                tmp = singleLine;  //the last element
+
+            if (tmp.length()) {
+                auto isTitleInTable = proportionDataSet.find(i);
+                if (isTitleInTable != proportionDataSet.end()) {
+                    auto isInMap = isTitleInTable->second.find(tmp);
+                    if (isInMap != isTitleInTable->second.end())
+                        isTitleInTable->second.at(isInMap->first)++;
+                    else
+                        isTitleInTable->second.insert(make_pair(tmp, 1));
+                } else {
+                    auto inMap = make_pair(tmp, 1);
+                    proportionDataSet[i].insert(inMap);
+                }
+            }
+            singleLine.erase(0, tmp.length() + 1);
+        }
+    }
+    inFile.close();
+    return fileName;
+}
 #endif
