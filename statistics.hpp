@@ -19,6 +19,14 @@ double genPValue(double z_value) {
     return P;
 }
 
+double genPValue(double degree, double upperTailArea) {
+    // this is the conjugate function of genTValue
+    // @degree: the degree of freedom
+    boost::math::students_t Tdistribution(degree);
+    auto P = boost::math::cdf(boost::math::complement(Tdistribution, upperTailArea));
+    return P;
+}
+
 double genZValue(double subscript, bool isSingleTail) {
     /*
     * @subscript: the score below the "z", which means the cumulative distribution function of the area. 
