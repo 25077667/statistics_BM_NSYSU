@@ -15,7 +15,7 @@ int main() {
         double sd = genPercentageStandardDeviation(p_0, sampleSize);
         auto test_statistic = (p_bar - p_0) / sd;
         auto p_value = genPValue(test_statistic, true);
-        cout << "the p-value is " << p_value << ". "
+        cout << "The p bar is " << p_bar << ", the p-value is " << p_value << ". "
              << "We do " << ((p_value < alpha) ? "" : "not ") << "reject H0 in " << i.first << endl;
     }
     cout << "In (d) please look hand-write paper." << endl;
