@@ -53,14 +53,16 @@ double genTValue(int degree, double upperTailArea) {
     return T;
 }
 
-double genMean(vector<double>& _dataSet) {
+template <typename Iteratable>
+double genMean(Iteratable& _dataSet) {
     double sum = 0;
     for (auto i : _dataSet)
         sum += i;
     return sum / _dataSet.size();
 }
 
-double genSampleStandardDeviation(vector<double>& _dataSet, double sampleMean, double size) {
+template <typename Iteratable>
+double genSampleStandardDeviation(Iteratable& _dataSet, double sampleMean, double size) {
     double sxx = 0;
     for (auto i : _dataSet)
         sxx += (i - sampleMean) * (i - sampleMean);
@@ -129,8 +131,18 @@ int x_bar(double alpha, double knownTheta, double marginError) {
 }
 }  // namespace needingSampleSize
 
-double testStatistic(double x_bar, double mu_0, double psd, int sampleSize) {
-    return (x_bar - mu_0) / (psd / sqrt(sampleSize));
+double testStatistic(double x_bar, double mu_0, double sd, int sampleSize, bool isSample = false) {
+    /**
+     * @x_bar: sampleMean
+     * @sd: standard deviation
+     * @mu_0: the null hypotheses
+     * @sampleSize: the sample size which want to againest the H0
+     * @isSample: Are we not know the population @sd?
+     *          if(false): we don't know the population standard deviation
+     */
+    if (isSample)
+        sampleSize -= 1;
+    return (x_bar - mu_0) / (sd / sqrt(sampleSize));
 }
 
 template <class T>
