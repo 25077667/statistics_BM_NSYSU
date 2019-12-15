@@ -89,13 +89,13 @@ double errorRadius(vector<double>& _dataSet, double upperTailArea = 0.025) {
     return errorRadius(_dataSet, sampleSize - 1, sampleSize, upperTailArea);
 }
 
-double errorRadius(double knownSigma, double alpha, int sampleSize) {
+double errorRadius(double knownSigma, double alpha, int sampleSize, bool isSingleTail = false) {
     /*
     * @knownSigma: the population sigma, which over sqrt(n)
     * giving alpha return the error radius for known Sigma of Z distribution
     * return the error radius
     */
-    return knownSigma / sqrt(sampleSize) * genZValue(alpha, false);
+    return knownSigma / sqrt(sampleSize) * genZValue(alpha, isSingleTail);
 }
 
 pair<double, double> genConfidenceInterval(double theta, double errorRadius, int tailOrient = 0) {
@@ -108,16 +108,31 @@ pair<double, double> genConfidenceInterval(double theta, double errorRadius, int
      *              else will reject two tail
      */
     if (tailOrient > 0)
-        return make_pair(-DBL_MAX, theta + errorRadius);
+        return make_pair(-numeric_limits<double>::infinity(), theta + errorRadius);
     else if (tailOrient < 0)
-        return make_pair(theta - errorRadius, DBL_MAX);
+        return make_pair(theta - errorRadius, numeric_limits<double>::infinity());
     else
         return make_pair(theta - errorRadius, theta + errorRadius);
 }
 
+vector<pair<double, double>> invertInterval(pair<double, double> originInterval) {
+    if (originInterval.first == -numeric_limits<double>::infinity())
+        return {make_pair(originInterval.second, numeric_limits<double>::infinity())};
+    else if (originInterval.second == numeric_limits<double>::infinity())
+        return {make_pair(-numeric_limits<double>::infinity(), originInterval.first)};
+    else
+        return {make_pair(-numeric_limits<double>::infinity(), originInterval.first),
+                make_pair(originInterval.second, numeric_limits<double>::infinity())};
+}
+
 template <typename T, typename S>
 ostream& operator<<(ostream& os, const pair<T, S>& v) {
-    os << "[" << v.first << ", " << v.second << "]";
+    pair<char, char> boundSign('[', ']');
+    if (v.first == -numeric_limits<double>::infinity())
+        boundSign.first = '(';
+    if (v.second == numeric_limits<double>::infinity())
+        boundSign.second = ')';
+    os << boundSign.first << v.first << ", " << v.second << boundSign.second;
     return os;
 }
 
