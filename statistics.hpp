@@ -177,6 +177,9 @@ int x_bar(double alpha, double knownTheta, double marginError) {
     auto sampleSize = z * z * knownTheta * knownTheta / marginError / marginError;
     return ceil(sampleSize);
 }
+int hypothesis(double mu_0, double mu_a, double za, double zb, double sigma) {
+    return ceil(pow((za + zb) * sigma / (mu_0 - mu_a), 2));
+}
 }  // namespace needingSampleSize
 
 double testStatistic(double x_bar, double mu_0, double sd, int sampleSize, bool isSample = false) {
@@ -288,4 +291,5 @@ string readMultiLineCSV(map<string, map<string, int>>& proportionDataSet, string
     inFile.close();
     return fileName;
 }
+
 #endif
