@@ -98,13 +98,21 @@ double errorRadius(double knownSigma, double alpha, int sampleSize) {
     return knownSigma / sqrt(sampleSize) * genZValue(alpha, false);
 }
 
-pair<double, double> genConfidenceInterval(double theta, double errorRadius) {
+pair<double, double> genConfidenceInterval(double theta, double errorRadius, int tailOrient = 0) {
     /*
      * @theta: the sample variable
      * @errorRadius: a radius of error, which might greater than 1,
      *               means the standardDeviation times (z or t) over sqrt(n)
+     * @tailOrient: if (tailOrient > 0) will reject right tail
+     *              else if (tailOrient < 0) will reject left tail
+     *              else will reject two tail
      */
-    return make_pair(theta - errorRadius, theta + errorRadius);
+    if (tailOrient > 0)
+        return make_pair(-DBL_MAX, theta + errorRadius);
+    else if (tailOrient < 0)
+        return make_pair(theta - errorRadius, DBL_MAX);
+    else
+        return make_pair(theta - errorRadius, theta + errorRadius);
 }
 
 template <typename T, typename S>
