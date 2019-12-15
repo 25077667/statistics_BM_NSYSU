@@ -12,12 +12,14 @@
 #define STATISTICS_HPP
 using namespace std;
 
-double genPValue(double z_value, bool isTwoTail = false) {
+double genPValue(double z_value, bool isTwoTail = false, bool tailInvertSign = false) {
     // need to add two tail test!
     // add bool isTwotail = false
     // this is the conjugate function of genZValue
     boost::math::normal Ndistribution(0, 1);
-    auto P = boost::math::cdf(boost::math::complement(Ndistribution, fabs(z_value)));
+    if (!tailInvertSign)
+        z_value = fabs(z_value);
+    auto P = boost::math::cdf(boost::math::complement(Ndistribution, z_value));
     if (isTwoTail)
         P *= 2;
     return P;
@@ -123,6 +125,25 @@ vector<pair<double, double>> invertInterval(pair<double, double> originInterval)
     else
         return {make_pair(-numeric_limits<double>::infinity(), originInterval.first),
                 make_pair(originInterval.second, numeric_limits<double>::infinity())};
+}
+
+pair<double, double> standardlizeInterval(pair<double, double> originInterval, double mu, double standardDeviation) {
+    /**
+     * @originInterval: the interval need to be standardlized
+     * @mu: the mean
+     * @standardDeviation: the standard deviation of mu
+     */
+    return make_pair((originInterval.first - mu) / standardDeviation, (originInterval.second - mu) / standardDeviation);
+}
+
+double intervalProbability(pair<double, double> standardlizedInterval) {
+    /*
+    * this will return the probability with z distribution in some interval
+    * @standardlizedInterval: the standardlized interval which want to get the probability
+    */
+    double leftTail = genPValue(standardlizedInterval.first, false, true),
+           rightTail = genPValue(standardlizedInterval.second, false, true);
+    return leftTail - rightTail;
 }
 
 template <typename T, typename S>
