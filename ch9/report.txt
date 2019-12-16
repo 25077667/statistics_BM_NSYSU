@@ -1,0 +1,116 @@
+B073040047 report
+this is problem 10
+In (a) 1.47573
+In (b) 0.0700083
+In (c) we do not reject H0
+In (d) please look hand-write paper.
+
+this is problem 11
+In (a) -2.00347
+In (b) 0.0225635
+In (c) we do reject H0
+In (d) please look hand-write paper.
+
+this is problem 14
+In (a) 0.193238.
+ we do not reject H0
+In (b) 0.00362998.
+ we do reject H0
+In (c) 0.0416323.
+ we do not reject H0
+
+this is problem 15
+In (a) please look hand-write paper.
+In (b) test statistic is -1.825 and p-value is 0.0340005
+In (c) we do reject H0
+In (d) please look hand-write paper.
+
+this is problem 17
+In (a) please look hand-write paper.
+In (b) test statistic is -1.55218 and p-value is 0.120618
+In (c) we do reject H0
+In (d) [106.73, 130.47]
+
+this is problem 20
+In (a) please look hand-write paper.
+In (b) test statistic is -2.40125
+In (c) p - value is 0.00816959
+In (d) we do reject H0
+
+this is problem 22
+In (a) please look hand-write paper.
+In (b) test statistic is 1.36931 and p-value is 0.170904
+In (c) we do not reject H0
+In (d) 95% confidence interval for the popupation mean is in [7.82746, 8.97254] minutes 
+
+this is problem 24
+In (a) the test statistic is -1.52348
+In (b) the p-value is 0.13434
+In (c) we do not reject H0
+In (d) the rejection rule is if x_bar is in (-inf, 16.6933] [19.3067, inf) 
+
+this is problem 29
+In (a) please look hand-write paper.
+In (b) the p-value is 0.250923 by the samle mean: 20.2383
+In (c) we do not reject H0
+In (d) the ciritical value is 19.1896 and 24.0504
+
+this is problem 33
+In (a) please look hand-write paper.
+In (b) 1440 - 1503 = -63
+In (c) test statistic is -1.87052 and p-value is 0.0307059
+In (c) we do reject H0
+
+this is problem 34
+In (a) please look hand-write paper.
+In (b) the smaple mean is 2.2
+In (c) the smaple standatrd deviation: 0.516398
+In (d) test statistic is 1.1619 and p-value is 0.245278
+In (e) we do not reject H0
+
+this is problem 38
+In (a) please look hand-write paper.
+In (b) test statistic is -2.5 and p-value is 0.0124193
+In (c) we do reject H0
+
+this is problem 39
+In (a) please look hand-write paper.
+In (b) Arkansas The p bar is 0.616667, the p-value is 0.379106. We do not reject H0 in Arkansas
+In (c) Virginia The p bar is 0.494444, the p-value is 0.0249651. We do reject H0 in Virginia
+In (d) please look hand-write paper.
+
+this is problem 44
+In (a) please look hand-write paper.
+In (b) test statistic is 2.77609 and p-value is 0.00275086
+In (c) we do reject H0
+
+this is problem 44
+In (a) test statistic is -1.42044 and p-value is 0.0777396
+	 we do not reject H0
+In (a) test statistic is 3.74185 and p-value is 9.13359e-05
+	 we do reject H0
+
+this is problem 49
+In (a) the reject regin is (-inf, 10.1126] 
+In (b) the type 2 error_area is -0.0410899
+In (c) the type 2 error_area is -0.356269
+In (d) the type 2 error_area is -0.00188736
+
+this is problem 51
+In (a) please look hand-write paper.
+In (b) the type 2 error_area is 0.0716923
+In (c) the power of this case is 0.928308
+
+this is problem 55
+The Z_alpha/2: 1.95996 and the Z_beta/2: 1.95996
+The sampleSize needs 385
+
+this is problem 57
+The Z_alpha/2: 2.32635 and the Z_beta/2: 1.64485
+In (a) the sampleSize needs 64
+
+this is problem 59
+The Z_alpha: 2.05375 and the Z_beta: 0.841621
+In (a) the sampleSize needs 89
+
+B073040047 report
