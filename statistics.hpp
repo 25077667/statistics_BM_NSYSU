@@ -17,19 +17,27 @@ double genPValue(double z_value, bool isTwoTail = false, bool tailInvertSign = f
     // add bool isTwotail = false
     // this is the conjugate function of genZValue
     boost::math::normal Ndistribution(0, 1);
-    if (!tailInvertSign)
-        z_value = fabs(z_value);
-    auto P = boost::math::cdf(boost::math::complement(Ndistribution, z_value));
+    auto P = boost::math::cdf(boost::math::complement(Ndistribution, fabs(z_value)));
+    if (isTwoTail && tailInvertSign)
+        throw "error range";
+    if (tailInvertSign)
+        P = 1 - P;
     if (isTwoTail)
         P *= 2;
     return P;
 }
 
-double genPValue(double degree, double upperTailArea) {
+double genPValue(double degree, double t_value, bool isTwoTail = false, bool tailInvertSign = false) {
     // this is the conjugate function of genTValue
     // @degree: the degree of freedom
     boost::math::students_t Tdistribution(degree);
-    auto P = boost::math::cdf(boost::math::complement(Tdistribution, upperTailArea));
+    auto P = boost::math::cdf(boost::math::complement(Tdistribution, fabs(t_value)));
+    if (isTwoTail && tailInvertSign)
+        throw "error range";
+    if (tailInvertSign)
+        P = 1 - P;
+    if (isTwoTail)
+        P *= 2;
     return P;
 }
 
@@ -91,12 +99,18 @@ double errorRadius(vector<double>& _dataSet, double upperTailArea = 0.025) {
     return errorRadius(_dataSet, sampleSize - 1, sampleSize, upperTailArea);
 }
 
-double errorRadius(double knownSigma, double alpha, int sampleSize, bool isSingleTail = false) {
+double errorRadius(double knownSigma, double alpha, int sampleSize, bool isSingleTail = false, bool isSample = false) {
     /*
     * @knownSigma: the population sigma, which over sqrt(n)
     * giving alpha return the error radius for known Sigma of Z distribution
     * return the error radius
     */
+
+    if (isSample) {
+        if (!isSingleTail)
+            alpha /= 2;
+        return knownSigma / sqrt(sampleSize) * genTValue(sampleSize - 1, alpha);
+    }
     return knownSigma / sqrt(sampleSize) * genZValue(alpha, isSingleTail);
 }
 
@@ -291,5 +305,4 @@ string readMultiLineCSV(map<string, map<string, int>>& proportionDataSet, string
     inFile.close();
     return fileName;
 }
-
 #endif
