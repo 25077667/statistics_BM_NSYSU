@@ -4,7 +4,7 @@ using namespace std;
 int main() {
     double ssd = 4.5, mu_0 = 18, alpha = 0.05, x_bar = 17;
     int sampleSize = 48;
-    cout << "this is problem 22" << endl;
+    cout << "this is problem 24" << endl;
 
     auto test_statistic = testStatistic(x_bar, mu_0, ssd, sampleSize, true);
     auto p_value = genPValue(sampleSize - 1, test_statistic, true, false);

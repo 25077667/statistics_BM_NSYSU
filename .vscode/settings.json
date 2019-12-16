@@ -5,6 +5,10 @@
         "iostream": "cpp",
         "iosfwd": "cpp",
         "tuple": "cpp",
-        "limits": "cpp"
+        "limits": "cpp",
+        "*.tcc": "cpp",
+        "deque": "cpp",
+        "string": "cpp",
+        "unordered_map": "cpp"
     }
 }
