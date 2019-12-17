@@ -85,21 +85,21 @@ In (b) test statistic is 2.77609 and p-value is 0.00275086
 In (c) we do reject H0
 
 this is problem 45
-In (a) test statistic is -1.42044 and p-value is 0.0777396
+In (a) test statistic is -1.42044 and p-value is 0.155479
 	 we do not reject H0
-In (a) test statistic is 3.74185 and p-value is 9.13359e-05
-	 we do reject H0
+In (a) test statistic is -1.36067 and p-value is 0.0868087
+	 we do not reject H0
 
 this is problem 49
 In (a) the reject regin is (-inf, 10.1126] 
-In (b) the type 2 error_area is -0.0410899
-In (c) the type 2 error_area is -0.356269
-In (d) the type 2 error_area is -0.00188736
+In (b) the type 2 error_area is 0.95891
+In (c) the type 2 error_area is 0.643731
+In (d) the type 2 error_area is 0.998113
 
 this is problem 51
 In (a) please look hand-write paper.
-In (b) the type 2 error_area is 0.0716923
-In (c) the power of this case is 0.928308
+In (b) the type 2 error_area is 0.928308
+In (c) the power of this case is 0.0716924
 
 this is problem 55
 The Z_alpha/2: 1.95996 and the Z_beta/2: 1.95996

@@ -155,9 +155,9 @@ double intervalProbability(pair<double, double> standardlizedInterval) {
     * this will return the probability with z distribution in some interval
     * @standardlizedInterval: the standardlized interval which want to get the probability
     */
-    double leftTail = genPValue(standardlizedInterval.first, false, true),
-           rightTail = genPValue(standardlizedInterval.second, false, true);
-    return leftTail - rightTail;
+    double leftTail = genPValue(standardlizedInterval.first, false, false),
+           rightTail = genPValue(standardlizedInterval.second, false, false);
+    return 1 - leftTail - rightTail;
 }
 
 template <typename T, typename S>
