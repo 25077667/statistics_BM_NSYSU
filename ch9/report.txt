@@ -84,7 +84,7 @@ In (a) please look hand-write paper.
 In (b) test statistic is 2.77609 and p-value is 0.00275086
 In (c) we do reject H0
 
-this is problem 44
+this is problem 45
 In (a) test statistic is -1.42044 and p-value is 0.0777396
 	 we do not reject H0
 In (a) test statistic is 3.74185 and p-value is 9.13359e-05

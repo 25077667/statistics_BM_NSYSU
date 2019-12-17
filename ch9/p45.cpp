@@ -5,7 +5,7 @@ int main() {
     int sampleSize = 300;
     double p_0 = 0.39, alpha = 0.05, p_bar = 0.35;
     double sd = genPercentageStandardDeviation(p_0, sampleSize);
-    cout << "this is problem 44" << endl;
+    cout << "this is problem 45" << endl;
 
     auto test_statistic = (p_bar - p_0) / sd;
     auto p_value = genPValue(test_statistic);
