@@ -94,7 +94,8 @@ this is problem 49
 In (a) the reject regin is (-inf, 10.1126] 
 In (b) the type 2 error_area is 0.95891
 In (c) the type 2 error_area is 0.643731
-In (d) the type 2 error_area is 0.998113
+In (d) the type 2 error_area has no meaning, because H0 is assuming mu_0 >= 10.6 and the x_bar = 10.8 > mu_0.
+That is H0 is correct, conflict with beta definition (H0 is false).
 
 this is problem 51
 In (a) please look hand-write paper.
@@ -102,12 +103,12 @@ In (b) the type 2 error_area is 0.928308
 In (c) the power of this case is 0.0716924
 
 this is problem 55
-The Z_alpha/2: 1.95996 and the Z_beta/2: 1.95996
-The sampleSize needs 385
+The Z_alpha/2: 1.95996 and the Z_beta: 1.64485
+The sampleSize needs 325
 
 this is problem 57
-The Z_alpha/2: 2.32635 and the Z_beta/2: 1.64485
-In (a) the sampleSize needs 64
+The Z_alpha/2: 2.32635 and the Z_beta: 1.28155
+In (a) the sampleSize needs 53
 
 this is problem 59
 The Z_alpha: 2.05375 and the Z_beta: 0.841621

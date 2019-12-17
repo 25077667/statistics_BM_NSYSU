@@ -21,8 +21,8 @@ int main() {
     type2error_area = intervalProbability(project2HaDistridution);
     cout << "In (c) the type 2 error_area is " << type2error_area << endl;
 
-    project2HaDistridution = standardlizeInterval(H0_interval, 10.8, psd / sqrt(sampleSize));
-    type2error_area = intervalProbability(project2HaDistridution);
-    cout << "In (d) the type 2 error_area is " << type2error_area << endl;
+    cout << "In (d) the type 2 error_area has no meaning, because H0 is assuming mu_0 >= 10.6 and the x_bar = 10.8 > mu_0." << endl
+         << "That is H0 is correct, conflict with beta definition (H0 is false)." << endl;
+
     return 0;
 }
