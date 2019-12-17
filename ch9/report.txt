@@ -113,5 +113,4 @@ In (a) the sampleSize needs 53
 this is problem 59
 The Z_alpha: 2.05375 and the Z_beta: 0.841621
 In (a) the sampleSize needs 89
-
 B073040047 report
