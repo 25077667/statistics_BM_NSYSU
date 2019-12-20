@@ -11,6 +11,8 @@
 #ifndef STATISTICS_HPP
 #define STATISTICS_HPP
 using namespace std;
+#define yes true
+#define no false
 
 double genPValue(double z_value, bool isTwoTail = false, bool tailInvertSign = false) {
     // need to add two tail test!
