@@ -1,33 +1,27 @@
 #include "../statistics.hpp"
-struct Company {
-    Company(double _y1, double _y2) {
-        y1 = _y1;
-        y2 = _y2;
-        p_value = 0;
-    }
-    void genSelfPValue(double coSigma) {
-        p_value = genPValue((y2 - y1) / coSigma);
-    }
-    double y1, y2, p_value;
-};
+#include "twoPopulation.hpp"
+
+bool isGreatherThanAverage(Company c, double alpha) {
+    double nationalAvg = 75.7;
+    auto p_value = genPValue((c.year2 - nationalAvg) / c.coSigma);
+    return p_value < alpha;
+}
 
 int main() {
-    Company Aid(73, 71), Expedia(75, 77), Penney(77, 78);
-    double sigma = 12, alpha = 0.05;
+    double sigma = 6, alpha = 0.05;
     int sampleSize = 60;
-    auto coSigma = sqrt(sigma * sigma / sampleSize + sigma * sigma / sampleSize);
-    auto radius = coSigma * genZValue(alpha, true);
+    Company Aid(73, 76, sigma, sigma, sampleSize),
+        Expedia(75, 77, sigma, sigma, sampleSize),
+        Penney(77, 78, sigma, sigma, sampleSize);
     cout << "This is problem 7" << endl;
-
-    Aid.genSelfPValue(coSigma);
-    Expedia.genSelfPValue(coSigma);
-    Penney.genSelfPValue(coSigma);
-
-    cout << "In (a) Rite Aid p_value is " << Aid.p_value << endl
+    cout << Aid.coSigma << endl;
+    cout << "In (a) Rite Aid test statistic is " << Aid.testStatistic << " and p_value is " << Aid.p_value << endl
          << "\tHence we do " << ((Aid.p_value < alpha) ? "" : "not ") << "reject H0" << endl;
+    cout << "In (b) is " << ((Aid.p_value < alpha && isGreatherThanAverage(Aid, alpha)) ? "" : "not ") << "reject H0." << endl;
 
-    auto interval = genConfidenceInterval(x_bar1 - x_bar2, radius);
-    cout << "In (c) in " << (1 - alpha) * 100 << "% confidence interval is in " << interval << endl;
+    cout << "In (c) Expedia test statistic is " << Expedia.testStatistic << " and p_value is " << Expedia.p_value << endl
+         << "\tHence we do " << ((Expedia.p_value < alpha) ? "" : "not ") << "reject H0" << endl;
+
 
     return 0;
 }
