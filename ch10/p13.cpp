@@ -8,7 +8,8 @@ int main() {
     auto privateSSD = genSampleStandardDeviation(privateCollege, privateMean, privateCollege.size());
     auto publicSSD = genSampleStandardDeviation(publicCollege, publicMean, publicCollege.size());
     auto coSigma = sqrt(privateSSD * privateSSD / privateCollege.size() + publicSSD * publicSSD / publicCollege.size());
-    auto radius = coSigma * genZValue(alpha, no);
+    auto df = twoPopulationDegreeFreedom(privateCollege, publicCollege);
+    auto radius = coSigma * genTValue(df, alpha / 2);
     auto interval = genConfidenceInterval(privateMean - publicMean, radius);
     cout << "This is problem 13" << endl;
 

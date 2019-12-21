@@ -6,7 +6,7 @@ Private College:
 Public College: 
 	mean is 22.3 and sample standard deviation is 4.53231
 In (b) the point estimate of the difference between these two 20.2
-In (c) in 95% confidence interval is in [15.1706, 25.2294]
+In (c) in 95% confidence interval is in [14.5521, 25.8479]
 
 This is problem 16
 In (a) Please look at the hand-write paper.
