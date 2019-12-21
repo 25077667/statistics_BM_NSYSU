@@ -1,0 +1,78 @@
+B073040047 report
+This is problem 13
+In (a) 
+Private College: 
+	mean is 42.5 and sample standard deviation is 6.98061
+Public College: 
+	mean is 22.3 and sample standard deviation is 4.53231
+In (b) the point estimate of the difference between these two 20.2
+In (c) in 95% confidence interval is in [15.1706, 25.2294]
+
+This is problem 16
+In (a) Please look at the hand-write paper.
+In (b) the point estimate of the difference between these two 37.8125
+In (c) the p-value is 0.0423579
+In (d) We do reject H0
+
+This is problem 7
+In (a) please look at the hand-write paper 
+In (b) the test statistics is 1.99235
+In (c) p_value is 0.0347911
+In (d) we do reject H0
+
+This is problem 22
+In (a) The sample mean is -0.0697948
+In (b) in 95% confidence interval is in [-0.113299, -0.0262909]
+
+This is problem 25
+In (a) The p_value is 0.0327393
+In (b) the D_bar is 25
+
+This is problem 25
+In (a) The p_value is 0.271103
+In (b) the interval is [6.44375, 11.2705]
+
+This is problem 31
+In (a) The p1 is 0.78
+In (b) The p2 is 0.6
+In (c) the interval is [0.0809149, 0.279085]
+
+This is problem 33
+In (a) Please look at the hand-write paper.
+In (b) The p1 is 0.75
+In (c) The p2 is 0.72
+In (d) the interval is [-0.0164934, 0.0764934]
+
+This is problem 34
+In (a) Please look at the hand-write paper.
+In (b) The p1 is 0.201681
+In (c) The p2 is 0.111111
+In (d) the p_vlaue is 0.0204582
+
+This is problem 34
+In (a) Please look at the hand-write paper.
+In (b) The p1 is 0.52 and the p2 is 0.37
+In (c) the p_vlaue is 0.00113175
+	Hence we do reject H0
+
+This is problem 4
+In (a) \bar x_1 - \bar x_2 is 3.96
+In (b) error radius is 1.87761
+In (c) in 95% confidence interval is in [2.08239, 5.83761]
+
+This is problem 7
+In (a) please look at the hand-write paper 
+In (b) the test statistics is 0.544853 and p_value is 0.585855
+	Hence we do not reject H0
+In (c) in 95% confidence interval is in [-2.01889, 4.01889]
+
+This is problem 8
+In (a) Rite Aid test statistic is -2.73861 and p_value is 0.00308495
+	Hence we do reject H0
+In (b) is not reject H0.
+In (c) Expedia test statistic is -1.82574 and p_value is 0.0339446
+	Hence we do reject H0
+In (d) Please look at hand-write paper.
+In (e) Expedia test statistic is -0.912871 and p_value is 0.180655
+
+B073040047 report
