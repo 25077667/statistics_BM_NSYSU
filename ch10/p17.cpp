@@ -5,7 +5,8 @@ int main() {
     int n1 = 16, n2 = 10;
     auto coSigma = sqrt(sampleSigma1 * sampleSigma1 / n1 + sampleSigma2 * sampleSigma2 / n2);
     auto test_statistic = (x_bar1 - x_bar2) / coSigma;
-    auto p_value = genPValue(test_statistic);
+    auto df = twoPopulationDegreeFreedom(sampleSigma1, sampleSigma2, n1, n2);
+    auto p_value = genPValue(df, test_statistic);
     cout << "This is problem 7" << endl;
 
     cout << "In (a) please look at the hand-write paper " << endl;

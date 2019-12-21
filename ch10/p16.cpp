@@ -8,7 +8,8 @@ int main() {
     auto collegeSSD = genSampleStandardDeviation(collegeGrads, collegeMean, collegeGrads.size());
     auto highSchoolSSD = genSampleStandardDeviation(highSchoolGrads, highSchoolMean, highSchoolGrads.size());
     auto coSigma = sqrt(collegeSSD * collegeSSD / collegeGrads.size() + highSchoolSSD * highSchoolSSD / highSchoolGrads.size());
-    auto p_value = genPValue((collegeMean - highSchoolMean) / coSigma);
+    auto degreeOfFreedom = twoPopulationDegreeFreedom(collegeGrads, highSchoolGrads);
+    auto p_value = genPValue(degreeOfFreedom, (collegeMean - highSchoolMean) / coSigma);
     cout << "This is problem 16" << endl;
 
     cout << "In (a) Please look at the hand-write paper." << endl;

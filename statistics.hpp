@@ -85,6 +85,19 @@ double genPercentageStandardDeviation(double p, int sampleSize) {
     return sqrt(p * (1 - p) / sampleSize);
 }
 
+int twoPopulationDegreeFreedom(double ssd1, double ssd2, int n1, int n2) {
+    auto sampleVariation1 = (ssd1 * ssd1 / n1) * (ssd1 * ssd1 / n1);
+    auto sampleVariation2 = (ssd2 * ssd2 / n2) * (ssd2 * ssd2 / n2);
+    return (sampleVariation1 + sampleVariation2) * (sampleVariation1 + sampleVariation2) /
+           (sampleVariation1 * sampleVariation1 / (n1 - 1) + sampleVariation2 * sampleVariation2 / (n2 - 1));
+}
+template <typename Iteratable>
+int twoPopulationDegreeFreedom(Iteratable& _dataSet1, Iteratable& _dataSet2) {
+    auto ssd1 = genSampleStandardDeviation(_dataSet1, genMean(_dataSet1), _dataSet1.size());
+    auto ssd2 = genSampleStandardDeviation(_dataSet2, genMean(_dataSet2), _dataSet2.size());
+    return twoPopulationDegreeFreedom(ssd1, ssd2, _dataSet1.size(), _dataSet2.size());
+}
+
 double errorRadius(vector<double>& _dataSet, int degree, int sampleSize, double upperTailArea) {
     double mean = genMean(_dataSet);
     double ssd = genSampleStandardDeviation(_dataSet, mean, sampleSize);

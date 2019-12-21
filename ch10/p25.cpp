@@ -10,7 +10,8 @@ int main() {
     }
     auto mean = genMean(di);
     auto ssd = genSampleStandardDeviation(di, mean, di.size());
-    auto p_value = genPValue(math.size() - 1, mean / (ssd / sqrt(di.size())), yes);
+    auto df = twoPopulationDegreeFreedom(math, writing);
+    auto p_value = genPValue(df, mean / (ssd / sqrt(di.size())), yes, no);
     cout << "This is problem 25" << endl;
 
     cout << "In (a) The p_value is " << p_value << endl;
