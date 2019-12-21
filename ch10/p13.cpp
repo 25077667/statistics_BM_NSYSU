@@ -12,7 +12,6 @@ int main() {
     auto radius = coSigma * genTValue(df, alpha / 2);
     auto interval = genConfidenceInterval(privateMean - publicMean, radius);
     cout << "This is problem 13" << endl;
-
     cout << "In (a) \nPrivate College: " << endl
          << "\tmean is " << privateMean << " and sample standard deviation is " << privateSSD << endl
          << "Public College: " << endl

@@ -86,8 +86,8 @@ double genPercentageStandardDeviation(double p, int sampleSize) {
 }
 
 int twoPopulationDegreeFreedom(double ssd1, double ssd2, int n1, int n2) {
-    auto sampleVariation1 = (ssd1 * ssd1 / n1) * (ssd1 * ssd1 / n1);
-    auto sampleVariation2 = (ssd2 * ssd2 / n2) * (ssd2 * ssd2 / n2);
+    auto sampleVariation1 = (ssd1 * ssd1 / n1);
+    auto sampleVariation2 = (ssd2 * ssd2 / n2);
     return (sampleVariation1 + sampleVariation2) * (sampleVariation1 + sampleVariation2) /
            (sampleVariation1 * sampleVariation1 / (n1 - 1) + sampleVariation2 * sampleVariation2 / (n2 - 1));
 }

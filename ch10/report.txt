@@ -6,7 +6,7 @@ Private College:
 Public College: 
 	mean is 22.3 and sample standard deviation is 4.53231
 In (b) the point estimate of the difference between these two 20.2
-In (c) in 95% confidence interval is in [14.5521, 25.8479]
+In (c) in 95% confidence interval is in [14.6963, 25.7037]
 
 This is problem 16
 In (a) Please look at the hand-write paper.
@@ -17,7 +17,7 @@ In (d) We do reject H0
 This is problem 7
 In (a) please look at the hand-write paper 
 In (b) the test statistics is 1.99235
-In (c) p_value is 0.0347911
+In (c) p_value is 0.0318398
 In (d) we do reject H0
 
 This is problem 22
@@ -25,7 +25,7 @@ In (a) The sample mean is -0.0697948
 In (b) in 95% confidence interval is in [-0.113299, -0.0262909]
 
 This is problem 25
-In (a) The p_value is 0.0327393
+In (a) The p_value is 0.0299258
 In (b) the D_bar is 25
 
 This is problem 25
