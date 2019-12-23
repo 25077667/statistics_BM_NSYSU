@@ -14,7 +14,7 @@ int main() {
     auto p_value = genPValue(df, (mean - 10) / (ssd / sqrt(di.size())), yes);
     auto radius = errorRadius(di);
     auto interval = genConfidenceInterval(mean, radius);
-    cout << "This is problem 25" << endl;
+    cout << "This is problem 27" << endl;
 
     cout << "In (a) The p_value is " << p_value << endl;
     cout << "In (b) the interval is " << interval << endl;

@@ -7,7 +7,7 @@ int main() {
     auto test_statistic = (x_bar1 - x_bar2) / coSigma;
     auto df = twoPopulationDegreeFreedom(sampleSigma1, sampleSigma2, n1, n2);
     auto p_value = genPValue(df, test_statistic);
-    cout << "This is problem 7" << endl;
+    cout << "This is problem 17" << endl;
 
     cout << "In (a) please look at the hand-write paper " << endl;
     cout << "In (b) the test statistics is " << test_statistic << endl;
