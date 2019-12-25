@@ -4,7 +4,7 @@ int main() {
     double x_bar1 = 86, x_bar2 = 85, sigma = 12, alpha = 0.05;
     int n1 = 86, n2 = 85;
     auto coSigma = sqrt(sigma * sigma / n1 + sigma * sigma / n2);
-    auto radius = coSigma * genZValue(alpha, true);
+    auto radius = coSigma * genZValue(alpha, no);
     auto theta = (x_bar1 - x_bar2) / coSigma;
     auto p_value = genPValue(theta, yes);
     cout << "This is problem 7" << endl;

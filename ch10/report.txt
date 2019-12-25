@@ -8,7 +8,7 @@ This is problem 7
 In (a) please look at the hand-write paper 
 In (b) the test statistics is 0.544853 and p_value is 0.585855
 	Hence we do not reject H0
-In (c) in 95% confidence interval is in [-2.01889, 4.01889]
+In (c) in 95% confidence interval is in [-2.59723, 4.59723]
 
 This is problem 8
 In (a) Rite Aid test statistic is -2.73861 and p_value is 0.00308495
