@@ -1,24 +1,4 @@
 B073040047 report
-This is problem 4
-In (a) \bar x_1 - \bar x_2 is 3.96
-In (b) error radius is 1.87761
-In (c) in 95% confidence interval is in [2.08239, 5.83761]
-
-This is problem 7
-In (a) please look at the hand-write paper 
-In (b) the test statistics is 0.544853 and p_value is 0.585855
-	Hence we do not reject H0
-In (c) in 95% confidence interval is in [-2.59723, 4.59723]
-
-This is problem 8
-In (a) Rite Aid test statistic is -2.73861 and p_value is 0.00308495
-	Hence we do reject H0
-In (b) is not reject H0.
-In (c) Expedia test statistic is -1.82574 and p_value is 0.0339446
-	Hence we do reject H0
-In (d) Please look at hand-write paper.
-In (e) Expedia test statistic is -0.912871 and p_value is 0.180655
-
 This is problem 13
 In (a) 
 Private College: 
@@ -74,5 +54,25 @@ In (a) Please look at the hand-write paper.
 In (b) The p1 is 0.52 and the p2 is 0.37
 In (c) the p_vlaue is 0.00113175
 	Hence we do reject H0
+
+This is problem 4
+In (a) \bar x_1 - \bar x_2 is 3.96
+In (b) error radius is 1.87761
+In (c) in 95% confidence interval is in [2.08239, 5.83761]
+
+This is problem 7
+In (a) please look at the hand-write paper 
+In (b) the test statistics is 0.973124 and p_value is 0.330492
+	Hence we do not reject H0
+In (c) in 95% confidence interval is in [-1.0141, 3.0141]
+
+This is problem 8
+In (a) Rite Aid test statistic is -2.73861 and p_value is 0.00308495
+	Hence we do reject H0
+In (b) is not reject H0.
+In (c) Expedia test statistic is -1.82574 and p_value is 0.0339446
+	Hence we do reject H0
+In (d) Please look at hand-write paper.
+In (e) Expedia test statistic is -0.912871 and p_value is 0.180655
 
 B073040047 report
